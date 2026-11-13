@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} {{config.title}} {% endblock %}</title>
+  <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+</head>
+<body>
+  {% set simdiki = current_path | default(value="/") %}
+  <header class="ust">
+    <div class="ust-ic">
+      <a class="site-adi" href="{{ get_url(path='@/_index.md') }}">{{ config.title }}</a>
+      <nav>
+        <a href="{{ get_url(path='@/_index.md') }}" {% if simdiki == "/" %}class="aktif"{% endif %}>Ana Sayfa</a>
+        <a href="{{ get_url(path='@/hakkinda.md') }}" {% if simdiki == "/hakkinda/" %}class="aktif"{% endif %}>Hakkında</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="alt">
+    © {{ now() | date(format="%Y") }} {{ config.title }}
+  </footer>
+</body>
+</html>

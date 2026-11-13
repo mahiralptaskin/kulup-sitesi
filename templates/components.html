@@ -1,0 +1,7 @@
+{#
+  Bazı satırlar arasında daha büyük boşluk bırakmak için.
+  Kullanım: {{ <bosluk boy={5} /> }}   (boy rem cinsinden, verilmezse 2)
+#}
+{% component bosluk(boy=2) %}
+<div style="height: {{ boy }}rem"></div>
+{% endcomponent bosluk %}
